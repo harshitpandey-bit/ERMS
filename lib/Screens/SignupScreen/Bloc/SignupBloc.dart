@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:erms/Service/DBHelper.dart';
 import 'package:erms/Service/ValidationService.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class SignupEvent {}
 
@@ -54,19 +54,20 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
 
       emit(SignupLoading());
       try {
-        // Check if the user already exists
         final existingUser = await _dbHelper.getUserByUsername(event.username);
         if (existingUser != null) {
           emit(SignupFailure('Username already exists'));
           return;
         }
 
-        // Insert the new user
         await _dbHelper.insertUser({
           'username': event.username,
           'password': event.password,
           'email': event.email,
         });
+
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('isLoggedIn', true);
 
         emit(SignupSuccess());
       } catch (e) {

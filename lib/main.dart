@@ -3,6 +3,7 @@ import 'package:erms/Screens/LoginScreen/Bloc/LoginBloc.dart';
 import 'package:erms/Screens/LoginScreen/LoginScreen.dart';
 import 'package:erms/Screens/SignupScreen/Bloc/SignupBloc.dart';
 import 'package:erms/Screens/SignupScreen/SignupScreen.dart';
+import 'package:erms/Screens/SplashScreen/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,9 +28,10 @@ class MyApp extends StatelessWidget {
         title: 'Login App',
         initialRoute: '/',
         routes: {
-          '/': (context) => LoginScreen(),
+          '/': (context) => SplashScreen(),
+          '/login': (context) => LoginScreen(),
           '/signup': (context) => SignupScreen(),
-          '/dashboard':(context)=>DashboardScreen()
+          '/dashboard': (context) => DashboardScreen(),
         },
       ),
     );

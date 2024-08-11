@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:erms/Service/DBHelper.dart';
 import 'package:erms/Service/ValidationService.dart';
-
 
 abstract class LoginEvent {}
 
@@ -52,6 +52,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           emit(LoginFailure('Invalid username or password'));
           return;
         }
+
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('isLoggedIn', true);
 
         emit(LoginSuccess());
       } catch (e) {

@@ -2,7 +2,6 @@ import 'package:erms/Screens/SignupScreen/Bloc/SignupBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class SignupScreen extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -37,9 +36,7 @@ class SignupScreen extends StatelessWidget {
                     SnackBar(content: Text(state.error)),
                   );
                 } else if (state is SignupSuccess) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Signup Successful')),
-                  );
+                  Navigator.pushReplacementNamed(context, '/dashboard');
                 }
               },
               builder: (context, state) {
