@@ -75,7 +75,7 @@ class AttendenceScreenState extends State<AttendenceScreen> {
                     child: PieChart(
                       PieChartData(centerSpaceRadius: 70,
                         sections: showingSections(designationCounts),
-                        pieTouchData: PieTouchData(
+                        pieTouchData: PieTouchData(enabled: true,
                           touchCallback: (FlTouchEvent event, pieTouchResponse) {
                             if (!event.isInterestedForInteractions || pieTouchResponse == null) {
                               return;
@@ -111,7 +111,10 @@ class AttendenceScreenState extends State<AttendenceScreen> {
     final titles = ['Present', 'Absent', 'Leave'];
 
     for (int i = 0; i < titles.length; i++) {
-      final isTouched = false; // You can customize this if you want to handle touches
+      bool isTouched = false;
+      if(expandedIndex==i){
+        isTouched =true;
+      }
       final fontSize = isTouched ? 25.0 : 16.0;
       final radius = isTouched ? 60.0 : 50.0;
 

@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Login App',
+        debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
           '/': (context) => SplashScreen(),

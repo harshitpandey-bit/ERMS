@@ -62,7 +62,7 @@ class PieChartSample2 extends StatelessWidget {
 
   List<PieChartSectionData> showingSections(int touchedIndex) {
     final sections = <PieChartSectionData>[];
-    final colors = [Colors.blue, Colors.yellow, Colors.purple];
+    final colors = [Colors.blue, Colors.teal, Colors.purple];
     final titles = ['Developers', 'Managers', 'Business Analysts'];
 
     int i = 0;
