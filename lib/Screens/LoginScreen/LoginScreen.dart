@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
             children: <Widget>[
               Image.asset("asset/images/login_image1-removebg-preview.png"),
               TextFormField(
-                controller: _passwordController,
+                controller: _usernameController,
                 decoration: InputDecoration(hintText:"Username",
                     border: const OutlineInputBorder(borderSide: BorderSide.none),
                     fillColor: Colors.grey[200]
